@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:abc/adduser.dart';
 import 'package:abc/login.dart';
 import 'package:abc/navigationbar.dart';
 import 'package:abc/profile.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       //theme: ThemeData.dark(),
         debugShowCheckedModeBanner: false,
-        home: NavigatioBar()
+        home: SplashScreen()
       //home: ScanScreen()
       //Pincode(title: "pincode app"),
     );

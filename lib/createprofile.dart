@@ -106,7 +106,7 @@ class _CreateProfileState extends State<CreateProfile> {
                         child: IconButton (
                           icon: Icon(Icons.person),
                           onPressed: () {
-                            //getImage();
+                            getImage();
                           },
                           color: Colors.white,
                           iconSize: 40,
@@ -220,7 +220,7 @@ class _CreateProfileState extends State<CreateProfile> {
                       if(formKey.currentState!.validate()){
                         //insertrecord();
                         formKey.currentState!.save();
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => NavigatioBar(),));
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NavigatioBar(),));
 
                       }
 
@@ -252,6 +252,9 @@ class _CreateProfileState extends State<CreateProfile> {
     );
   }
 
+}
+
+void getImage() {
 }
 
 

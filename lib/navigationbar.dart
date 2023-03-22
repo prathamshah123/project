@@ -1,8 +1,9 @@
+import 'package:abc/adduser.dart';
 import 'package:abc/employee.dart';
 import 'package:abc/vehiclerecords.dart';
 import 'package:flutter/material.dart';
 import 'package:abc/profile.dart';
-
+import 'package:abc/login.dart';
 
 class NavigatioBar extends StatefulWidget {
   const NavigatioBar({Key? key}) : super(key: key);
@@ -17,82 +18,84 @@ class _NavigatioBarState extends State<NavigatioBar> {
     VehicleRecords(),
     EmployeeRecords(),
     ProfilePage(),
-
   ];
 
-  void onTappedBar(int index)
-  {
+  void onTappedBar(int index) {
     setState(() {
       currentIndex = index;
-
     });
-
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SafeArea(
+      home: DefaultTabController(
+        length: 3,
         child: Scaffold(
-            appBar: AppBar(
-              title: Text('M-Towing'),
-              backgroundColor: Color(0xFFFF981A),
-              actions: [
-                Theme(
-                  data: Theme.of(context).copyWith(dividerColor: Colors.red),
-                  child: PopupMenuButton<int>(itemBuilder: (context)=>[
-                    PopupMenuItem<int>(
-                        value: 0,
-                        child: Row(
-                          children: [Icon(Icons.add_box_outlined,color: Colors.lightBlueAccent,),
-                            const SizedBox(width: 7,),
-                            Text("Add User"),],
-                        )
-                    ),
-                    PopupMenuDivider(),
-                    PopupMenuItem<int>(
-                        value: 1,
-                        child: Row(
-                          children: [Icon(Icons.logout,color: Colors.red,),
-                            const SizedBox(width: 7,),
-                            Text("Logout"),
-                            // onTappedBar(
-                            //     Navigator.push(context, MaterialPageRoute(builder: (context) => const login(),)),
-                            // ),
-                          ],
-                        )
-                    )
-                  ],),
+          appBar: AppBar(
+            backgroundColor: Color(0xFFFF981A),
+            bottom: const TabBar(
+              tabs: [
+                Tab(icon: Icon(Icons.directions_car)),
+                Tab(icon: Icon(Icons.account_balance_outlined)),
+                Tab(icon: Icon(Icons.account_circle)),
+              ],
+            ),
+            title: const Text('M-Towing'),
+          ),
+          body: const TabBarView(
+            children: [
+              VehicleRecords(),
+              EmployeeRecords(),
+              ProfilePage(),
+            ],
+          ),
+          drawer: Drawer(
+            // Add a ListView to the drawer. This ensures the user can scroll
+            // through the options in the drawer if there isn't enough vertical
+            // space to fit everything.
+            child: ListView(
+              // Important: Remove any padding from the ListView.
+              padding: EdgeInsets.zero,
+              children: [
+                const DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Colors.orange,
+                  ),
+                  child: Text('Menu'),
+                ),
+                ListTile(
+                  title: const Text('Add User'),
+                  onTap: () {
+                    // Update the state of the app
+                    // ...
+                    // Then close the drawer
+                    //Navigator.pop(context);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => adduser(),
+                        ));
+                  },
+                ),
+                ListTile(
+                  title: const Text('Logout'),
+                  onTap: () {
+                    // Update the state of the app
+                    // ...
+                    // Then close the drawer
+                    //Navigator.pop(context);
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => login(),
+                        ));
+                  },
                 ),
               ],
             ),
-
-            bottomNavigationBar: BottomNavigationBar(
-              onTap: onTappedBar,
-              fixedColor: Colors.black,
-              iconSize: 30,
-              currentIndex: currentIndex,
-              items: const [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.list_alt),
-                  // icon: ImageIcon(AssetImage('assets/car(1).jpg'),
-                  // ),
-                 label: "Vehicles",
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.account_balance),
-                  label: "Employee",
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.person),
-                  label: "Profile",
-                )
-              ],
-            ),
-            body: _children[currentIndex]
-
-
+          ),
         ),
       ),
     );

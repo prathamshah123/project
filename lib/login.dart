@@ -126,7 +126,7 @@ class _loginState extends State<login> {
                         //    formKey.currentState!.save();
                         //     print("submitted");
                         //     }
-                         Navigator.push(
+                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(builder: (context) => const CreateProfile()));
                       },

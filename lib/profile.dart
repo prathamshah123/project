@@ -83,7 +83,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   SizedBox(height: height/55,),
 
                   const Center(
-                    child: Text("ABHI SOLANKI",style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+                    child: Text("Pratham Shah",style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
                   ),
                   SizedBox(height: height/55,),
 
@@ -109,7 +109,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     padding: EdgeInsets.symmetric(horizontal: width/15),
                     child: const TextField(
                       decoration: InputDecoration(
-                          hintText: "ABHI SOLANKI",
+                          hintText: "Pratham Shah",
                           hintStyle: TextStyle(fontWeight: FontWeight.bold)
                       ),
                     ),
@@ -136,7 +136,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     padding: EdgeInsets.symmetric(horizontal: width/15),
                     child: const TextField(
                       decoration: InputDecoration(
-                          hintText: "+91 9912983456",
+                          hintText: "+91 9327562278",
                           hintStyle: TextStyle(fontWeight: FontWeight.bold,fontSize: 17)
                       ),
                     ),
@@ -150,7 +150,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     padding: EdgeInsets.symmetric(horizontal: width/15),
                     child: const TextField(
                       decoration: InputDecoration(
-                          hintText: "382443",
+                          hintText: "380022",
                           hintStyle: TextStyle(fontWeight: FontWeight.bold,fontSize: 17)
                       ),
                     ),
